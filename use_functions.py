@@ -34,6 +34,10 @@
 Для реализации основного меню можно использовать пример ниже или написать свой
 """
 
+ballance = 0
+purchase_history = []
+
+
 while True:
     print('1. пополнение счета')
     print('2. покупка')
@@ -42,11 +46,19 @@ while True:
 
     choice = input('Выберите пункт меню')
     if choice == '1':
-        pass
+        refill = int(input('Введите сумму, которую хотите внести: '))
+        ballance += refill
+        print(f'На Вашем счету {ballance}')
     elif choice == '2':
-        pass
+        purchase_cost = int(input('Введите цену покупки: '))
+        if purchase_cost > ballance:
+            print('Недостаточно средств')
+        else:
+            purchase_name = input('Введите наименование покупки: ')
+            ballance -= purchase_cost
+            purchase_history.append((purchase_name, purchase_cost))
     elif choice == '3':
-        pass
+        print(purchase_history)
     elif choice == '4':
         break
     else:
